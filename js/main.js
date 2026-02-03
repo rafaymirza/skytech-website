@@ -41,70 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
 
-  const form = document.getElementById("contactForm");
-  const nameInput = document.getElementById("name");
-  const emailInput = document.getElementById("email");
-  const messageInput = document.getElementById("message");
-
-  const nameError = nameInput.nextElementSibling;
-  const emailError = emailInput.nextElementSibling;
-  const messageError = messageInput.nextElementSibling;
-
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-
-    let isValid = true;
-
-    // Name validation
-    if(!nameInput.value.trim()){
-      nameInput.classList.add("invalid");
-      nameError.style.display = "block";
-      isValid = false;
-    } else {
-      nameInput.classList.remove("invalid");
-      nameError.style.display = "none";
-    }
-
-    // Email validation
-    if(!emailInput.value.trim() || !emailInput.value.includes("@")){
-      emailInput.classList.add("invalid");
-      emailError.style.display = "block";
-      isValid = false;
-    } else {
-      emailInput.classList.remove("invalid");
-      emailError.style.display = "none";
-    }
-
-    // Message validation
-    if(!messageInput.value.trim()){
-      messageInput.classList.add("invalid");
-      messageError.style.display = "block";
-      isValid = false;
-    } else {
-      messageInput.classList.remove("invalid");
-      messageError.style.display = "none";
-    }
-
-    // If valid, send via EmailJS
-    if(isValid){
-      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-        from_name: nameInput.value,
-        from_email: emailInput.value,
-        message: messageInput.value
-      })
-      .then(() => {
-        alert("Message sent successfully!");
-        form.reset();
-      })
-      .catch(() => {
-        alert("Failed to send message. Please try again later.");
-      });
-    }
-  });
-});
 //tag line
 const tagline = document.querySelector('.tagline-text');
 
@@ -249,24 +186,166 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+//email sent function//
 
-//landind page 
-//whatsup
- function toggleChat() {
-      const chatBox = document.getElementById("chatBox");
-      chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const fullName = document.getElementById('fullName');
+  const email = document.getElementById('email');
+  const company = document.getElementById('company');
+  const phone = document.getElementById('phone');
+  const message = document.getElementById('message');
+
+  let isValid = true;
+
+  function validateField(field) {
+    if (field.value.trim() === "") {
+      field.classList.add('invalid');
+      field.nextElementSibling.style.display = "block";
+      isValid = false;
+    } else {
+      field.classList.remove('invalid');
+      field.nextElementSibling.style.display = "none";
     }
+  }
 
-    function sendMessage() {
-      const input = document.getElementById("userInput");
-      const message = input.value.trim();
-      if (message !== "") {
-        const chatBody = document.getElementById("chatBody");
-        const userMsg = document.createElement("p");
-        userMsg.innerHTML = "<strong>You:</strong> " + message;
-        chatBody.appendChild(userMsg);
-        chatBody.scrollTop = chatBody.scrollHeight;
-        input.value = "";
+  validateField(fullName);
+  validateField(company);
+  validateField(message);
+
+  // Email validation
+  const emailPattern = /\S+@\S+\.\S+/;
+  if (email.value.trim() === "" || !emailPattern.test(email.value)) {
+    email.classList.add('invalid');
+    email.nextElementSibling.style.display = "block";
+    isValid = false;
+  } else {
+    email.classList.remove('invalid');
+    email.nextElementSibling.style.display = "none";
+  }
+
+  // Phone validation (10–15 digits)
+  const phonePattern = /^[0-9]{10,15}$/;
+  if (phone.value.trim() === "" || !phonePattern.test(phone.value)) {
+    phone.classList.add('invalid');
+    phone.nextElementSibling.style.display = "block";
+    isValid = false;
+  } else {
+    phone.classList.remove('invalid');
+    phone.nextElementSibling.style.display = "none";
+  }
+
+  if (!isValid) return;
+
+  const templateParams = {
+    full_name: fullName.value,
+    email: email.value,
+    company: company.value,
+    phone: phone.value,
+    message: message.value
+  };
+
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+    .then(() => {
+      alert('Message sent successfully!');
+      contactForm.reset();
+    })
+    .catch(error => {
+      alert('Failed to send message. Please try again later.');
+      console.error(error);
+    });
+});
+
+
+//  end end end end the email function
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const sections = document.querySelectorAll('.app-section');
+
+  function showSections(page) {
+    sections.forEach(section => {
+      const pages = section.dataset.page.split(' ');
+      section.style.display = pages.includes(page) ? 'block' : 'none';
+    });
+  }
+
+  function scrollToService(id) {
+    if (!id) return;
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    }, 300);
+  }
+
+  // Default view
+  showSections('home');
+
+  // 🔥 ONE CLICK HANDLER FOR EVERYTHING
+  document.addEventListener('click', e => {
+    const trigger = e.target.closest('[data-nav]');
+    if (!trigger) return;
+
+    e.preventDefault();
+
+    const page = trigger.dataset.nav;
+    const target = trigger.dataset.target;
+
+    // Update navbar active state
+    document.querySelectorAll('.navbar-menu a')
+      .forEach(a => a.classList.remove('active'));
+
+    const activeNav = document.querySelector(
+      `.navbar-menu a[data-nav="${page}"]`
+    );
+    if (activeNav) activeNav.classList.add('active');
+
+    showSections(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    scrollToService(target);
+  });
+
+});
+
+///////////////////////services///////////////////
+const cards = document.querySelectorAll('.service-card');
+
+const scrollAnimateCards = () => {
+  const viewport = window.innerHeight;
+
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+
+    const start = viewport;
+    const end = viewport * 0.6;
+
+    if (rect.top <= start && rect.top >= end) {
+      const progress = (rect.top - end) / (start - end);
+
+      const translateY = progress * 220;
+      const rotateX = progress * 8;
+      const scale = 0.96 + (1 - progress) * 0.04;
+
+      card.style.opacity = 1;
+      card.style.transform = `
+        translateY(${translateY}px)
+        rotateX(${rotateX}deg)
+        scale(${scale})
+      `;
     }
-//whatsup
+
+    // Lock position
+    if (rect.top < end) {
+      card.classList.add('active');
+    }
+  });
+};
+
+window.addEventListener('scroll', scrollAnimateCards);
+scrollAnimateCards();

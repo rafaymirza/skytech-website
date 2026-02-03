@@ -8,7 +8,13 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  // Initialize EmailJS
+  (function(){
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+  })();
+  </script>
 
 </head>
 <body>
@@ -18,18 +24,19 @@
     <nav class="navbar">
       <div class="navbar-container">
         <a href="index.html" class="navbar-logo">
-          <img src="./images/SkyTech-Logo-White.png" style="width: 200px; height: 120px;"> </a>
+        <img src="./images/SkyTech-Logo.png" alt="SkyTech Logo">
+      </a>
+      
         <button class="navbar-toggle">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </button>
         <ul class="navbar-menu">
-          <li><a href="#" class="active">Home</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Our Service</a></li>
-        
-          <li><a href="#">Contact</a></li>
+           <li><a href="#" data-nav="home" class="active">Home</a></li>
+    <li><a href="#" data-nav="about">About Us</a></li>
+    <li><a href="#" data-nav="services">Services</a></li>
+    <li><a href="#" data-nav="contact">Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -38,7 +45,7 @@
 
   <!--Landing page design-->
   <!-- ===== Shield Autoplay Slider Section ===== -->
-<section class="shield-section">
+<section class="shield-section app-section" data-page="home">
  
 
   <!-- Slider -->
@@ -48,49 +55,62 @@
      <p>Cloud Infrastructure & Technology</p>
       <h1>Build secure, scalable, and intelligent cloud foundations for growth.</h1>
        
-      <a href="#" class="shield-btn">Learn More</a>
+ <a href="#" class="shield-btn" data-nav="services" data-target="workplace">
+  Learn More
+</a>
+ 
     </div>
 
     <div class="shield-slide" style="background-image:url('./images/sheild4.jpg');">
         <p>Artificial Intelligence & Automation</p>
       <h1>Optimise business outcomes with intelligent automation and AI innovation.</h1>
     
-      <a href="#" class="shield-btn">Learn More</a>
+ <a href="#" class="shield-btn" data-nav="services" data-target="workplace">
+  Learn More
+</a>
     </div>
 
     <div class="shield-slide" style="background-image:url('./images/sheild5.jpg');">
       <p>Modern Workplace</p>
       <h1>Empower teams with seamless, secure, andconnected digital workspaces.</h1>
       
-      <a href="#" class="shield-btn">Learn More</a>
+    <a href="#" class="shield-btn" data-nav="services" data-target="workplace">
+  Learn More
+</a>
     </div>
 
     <div class="shield-slide" style="background-image:url('./images/sheild7.jpg');">
      <p>Security & Zero Trust</p>
       <h1>Strengthen identity, data, and device security through Zero Trust.</h1>
        
-      <button href="#" class="shield-btn">Learn More</button>
+     <a href="#" class="shield-btn" data-nav="services" data-target="workplace">
+  Learn More
+</a>
     </div>
 
     <div class="shield-slide" style="background-image:url('./images/sheild8.jpg');">
           <p>Power Platform</p>
       <h1>Accelerate digital transformation with low-code, data-driven automation. </h1>
   
-      <a href="#" class="shield-btn">Learn More</a>
+      <a href="#" class="shield-btn" data-nav="services" data-target="workplace">
+  Learn More
+</a>
     </div>
      <div class="shield-slide" style="background-image:url('./images/sheild10.jpg');">
       <p>Data Analytics</p>
       <h1>Transform raw data into actionable insights that drive innovation</h1>
       
-      <a href="#" class="shield-btn">Learn More</a>
+    <a href="#" class="shield-btn" data-nav="services" data-target="workplace">
+  Learn More
+</a>
     </div>
  <div class="shield-tab-bar" id="shieldTabs">
-    <div class="tab-item active"><span class="tab-count">01</span><span class="tab-title">Cloud Infrastructure & Technology</span></div>
-    <div class="tab-item"><span class="tab-count">02</span><span class="tab-title">Artificial Intelligence & Automation</span></div>
-    <div class="tab-item"><span class="tab-count">03</span><span class="tab-title">Modern Workplace</span></div>
-    <div class="tab-item"><span class="tab-count">04</span><span class="tab-title">Security & Zero Trust</span></div>
-    <div class="tab-item"><span class="tab-count">05</span><span class="tab-title">Power Platform</span></div>
-  <div class="tab-item"><span class="tab-count">06</span><span class="tab-title">Data Analytics</span></div>
+    <div class="tab-item active" data-nav="services" data-target="workplace"><span class="tab-count">01</span><span class="tab-title">Cloud Infrastructure & Technology</span></div>
+    <div class="tab-item" data-nav="services" data-target="workplace"><span class="tab-count">02</span><span class="tab-title">Artificial Intelligence & Automation</span></div>
+    <div class="tab-item" data-nav="services" data-target="workplace"><span class="tab-count">03</span><span class="tab-title">Modern Workplace</span></div>
+    <div class="tab-item" data-nav="services" data-target="workplace"><span class="tab-count">04</span><span class="tab-title">Security & Zero Trust</span></div>
+    <div class="tab-item" data-nav="services" data-target="workplace"><span class="tab-count">05</span><span class="tab-title">Power Platform</span></div>
+  <div class="tab-item" data-nav="services" data-target="workplace"><span class="tab-count">06</span><span class="tab-title">Data Analytics</span></div>
 
   </div>
 
@@ -103,7 +123,7 @@
 
 
 <!-- Tagline Section -->
-<section class="tagline-section">
+<section class="tagline-section app-section" data-page="home">
   <h1 class="tagline-text">
     Secure <i class="fa-solid fa-bolt tagline-icon"></i> 
     Transform <i class="fa-solid fa-bolt tagline-icon"></i> 
@@ -112,17 +132,65 @@
 </section>
 
 <!-- About Section -->
-  <section class="about-section">
+ <section class="about-section app-section" data-page="about">
+   <div class="about-highlight animate-text">
+   Transforming Ideas into Intelligent Solutions
+
+    </div>
+    
+</section>
+<section class="vision-image-row app-section" data-page="about">
+    <div class="row">
+      <div class="col">
+        <img src="./images/about.png" alt="about us" class="rounded-img" />
+      </div>
+    </div>
+</section>
+<section class="about-inside app-section" data-page="about">
+
+  <!-- ===== Row 1: Text Left, Image Right ===== -->
+  <div class="about-inside-row">
+    <div class="about-inside-col about-text-col">
+      <h2 class="animate-text"> Our Mission</h2>
+      <p class="animate-text">
+      To empower organisations with intelligent, secure, and future-ready technology solutions that simplify operations, 
+      strengthen resilience, and enable digital growth through the Microsoft ecosystem. </p>
+    </div>
+    <div class="about-inside-col about-image-col">
+      <img src="./images/img4.jpg" alt="About Us Image">
+    </div>
+  </div>
+
+  <!-- ===== Row 2: Image Left, Text Right ===== -->
+  <div class="about-inside-row">
+    <div class="about-inside-col about-image-col">
+      <img src="./images/img5.jpg" alt="About Us Image">
+    </div>
+    <div class="about-inside-col about-text-col">
+      <h2 class="animate-text">Our Approach</h2>
+      <p class="animate-text">
+      We believe every business has unique goals and challenges. Our approach combines strategic consulting 
+      with hands-on technical delivery - ensuring every solution is practical, scalable, and aligned with our clients' objectives.
+We focus on collaboration, continuous improvement, and measurable outcomes to ensure technology not only
+ supports but accelerates business success.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+  <section class="about-section app-section" data-page="home">
     <div class="row about-row">
       <div class="about-heading">
         <p class="animate-text">About Us</p>
         <h1 class="animate-text">Our Story</h1>
       </div>
     </div>
-  </section>
+
+</section>
 
 <!-- mission-section -->
-  <section class="mission-section">
+  <section class="mission-section app-section" data-page="home">
   <div class="mission-container">
     <h1 class="animate-text">Our Mission</h1>
     <p class="animate-text">
@@ -136,7 +204,7 @@
 </section>
 
 <!-- Vision-section -->
-<section class="vision-section">
+<section class="vision-section app-section" data-page="home">
   <div class="two-col-row">
     <div class="col-left">
       <h1 class="animate-text">Our Approach</h1>
@@ -160,7 +228,7 @@ supports but accelerates business success.
   </div>
 </section>
  <!-- Vision Image Section -->
-  <section class="vision-image-row">
+  <section class="vision-image-row app-section" data-page="home">
     <div class="row">
       <div class="col">
         <img src="./images/img7.jpg" alt="Rounded Image" class="rounded-img" />
@@ -170,32 +238,133 @@ supports but accelerates business success.
 
 
   <!-- Our Services Section -->
-<section class="services-section">
-  <div class="services-container">
-   
-    <h2 class="animate-text">What We Offer</h2>
-       <h1 class="animate-text">Our Services</h1>
+<section class="app-section" data-page="services">
+
+  <!-- TOP INTRO CARD -->
+  <div class="services-inside-container">
+    <h3 class="animate-text">Our Services</h3>
+    <h1 class="animate-text">Empowering Businesses with Technology</h1>
     <p class="animate-text">
-      Discover our comprehensive suite of services designed to elevate your business to new heights.
+      Discover how our solutions can elevate your business.
     </p>
   </div>
+
+  <!-- SERVICES LIST -->
+  <div class="services-scroll">
+
+    <div class="service-card reveal">
+      <div class="service-icon"><img src="./images/icons/Cloud Infrastructure-new.svg" alt="Cloud Infrastructure & Technology" class="service-icon  animate-text">
+          </div>
+      <div class="service-title animate-text">
+        <h2>Cloud Infrastructure</h2>
+      </div>
+      <div class="service-text animate-text">
+        <p>Design, build, and optimise scalable Azure environments. We modernise your IT foundation with secure, high-performing cloud solutions-enabling agility, cost efficiency, and resilience across hybrid or multi-cloud architectures tailored to your business needs.
+</p>
+      </div>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon"> 
+       <img src="./images/icons/Modern Workplace-new.svg" alt="Modern Workplace" class="service-icon animate-text">
+           </div>
+      <div class="service-title animate-text">
+        <h2>Modern Workplace</h2>
+      </div>
+      <div class="service-text animate-text">
+        <p>Empower your workforce with Microsoft 365 collaboration tools. We design secure, connected workplaces using Teams,
+<br><br>
+SharePoint, and OneDrive-enhancing productivity, flexibility, and teamwork from anywhere, on any device.
+</p>
+      </div>
+    </div>
+
+    
+
+    <div class="service-card reveal">
+      <div class="service-icon"> <img src="./images/icons/security-new.svg" alt="Security & Zero Trust" class="service-icon  animate-text">
+         </div>
+      <div class="service-title animate-text">
+        <h2>Security & Zero Trust</h2>
+      </div>
+      <div class="service-text animate-text">
+        <p>Adopt a Zero Trust security model that continuously verifies users and devices. We deploy Entra ID, Defender XOR, and compliance controls to strengthen identity protection, reduce risks, and ensure organisational resilience.
+
+
+</p>
+      </div>
+    </div>
+
+
+
+     <div class="service-card reveal">
+      <div class="service-icon">
+         <img src="./images/icons/Data Analytics1-new.svg" alt="Data Analytics" class="service-icon animate-text">
+          </div>
+      <div class="service-title animate-text">
+        <h2>Data Analytics</h2>
+      </div>
+      <div class="service-text animate-text">
+        <p>Transform raw data into actionable insights. We deliver scalable analytics platforms using Power Bl, Azure Synapse, and Fabric  empowering data-driven decisions that improve performance, transparency, and business growth.
+
+
+
+</p>
+      </div>
+    </div>
+
+     <div class="service-card reveal">
+      <div class="service-icon">
+         <img src="./images/icons/Automation AI & Machine Learning-lightblue.svg" alt="Artificial Intelligence & Automation" class="service-icon animate-text">
+         </div>
+      <div class="service-title animate-text">
+        <h2>Artificial Intelligence & Automation</h2>
+      </div>
+      <div class="service-text animate-text">
+        <p>
+          Accelerate innovation through intelligent automation. Using Copilot, Azure OpenAI, and Logic Apps, we streamline workflows, enhance decision-making, and deliver predictive solutions that drive efficiency and competitive advantage.
+
+
+</p>
+      </div>
+    </div>
+
+
+     <div class="service-card reveal">
+      <div class="service-icon">
+          <img src="./images/icons/social_media-new.svg" alt="Power Platform" class="service-icon animate-text">
+          </div>
+      <div class="service-title animate-text">
+        <h2>Power Platform</h2>
+      </div>
+      <div class="service-text">
+        <p>Empower teams to innovate with low-code solutions. We build secure, governed Power Apps, Power Bl, and Power Automate environments-enabling rapid automation, data insights, and business transformation.
+
+
+
+</p>
+      </div>
+    </div>
+
+  </div>
 </section>
+
 <!-- Services Section -->
-<section class="services-section">
+<section class="services-section app-section" data-page="home">
   <div id="services-container">
 
     <!-- Page 1 -->
     <div class="services-page active">
       <div class="services-row">
-         <div class="service-col">
+         <div class="service-col" data-nav="services" data-target="workplace">
           <img src="./images/icons/Cloud Infrastructure-new.svg" alt="Cloud Infrastructure & Technology" class="service-icon  animate-text">
           <h3 class="animate-text">Cloud Infrastructure & Technology</h3>
         </div>
-            <div class="service-col">
+            <div class="service-col" data-nav="services" data-target="workplace">
           <img src="./images/icons/Automation AI & Machine Learning-lightblue.svg" alt="Artificial Intelligence & Automation" class="service-icon animate-text">
           <h3 class="animate-text">Artificial Intelligence & Automation</h3>
         </div>
-        <div class="service-col">
+        <div class="service-col" data-nav="services" data-target="workplace">
           <img src="./images/icons/Modern Workplace-new.svg" alt="Modern Workplace" class="service-icon animate-text">
           <h3 class="animate-text">Modern Workplace</h3>
         </div>
@@ -203,15 +372,15 @@ supports but accelerates business success.
        
       </div>
       <div class="services-row">
-        <div class="service-col">
+        <div class="service-col" data-nav="services" data-target="workplace">
           <img src="./images/icons/security-new.svg" alt="Security & Zero Trust" class="service-icon  animate-text">
           <h3 class="animate-text">Security & Zero Trust</h3>
         </div>
-         <div class="service-col">
+         <div class="service-col" data-nav="services" data-target="workplace">
           <img src="./images/icons/social_media-new.svg" alt="Power Platform" class="service-icon animate-text">
           <h3 class="animate-text">Power Platform</h3>
         </div>
-        <div class="service-col">
+        <div class="service-col" data-nav="services" data-target="workplace">
           <img src="./images/icons/Data Analytics1-new.svg" alt="Data Analytics" class="service-icon animate-text">
           <h3 class="animate-text">Data Analytics</h3>
         </div>
@@ -263,8 +432,12 @@ supports but accelerates business success.
 </section>
 
 
+
+
+
+
 <!-- Why Choose Us Section -->
-<section class="why-choose-section">
+<section class="why-choose-section app-section" data-page="home">
   <div class="why-choose-container">
      <h2 class="animate-text">Why Choose Us</h2>
     <h1 class="animate-text">Our Advantages</h1>
@@ -273,7 +446,7 @@ supports but accelerates business success.
   </div>
 </section>
 <!-- Four Column Features Section -->
-<section class="features-4col">
+<section class="features-4col app-section" data-page="home">
   <div class="row">
     <!-- Column 1 -->
     <div class="feature-card">
@@ -328,42 +501,50 @@ supports but accelerates business success.
 
 
 <!-- Contact Section -->
-<section class="contact-section">
+<section class="contact-section app-section" data-page="home contact">
   <div class="contact-row">
     <!-- Left Column (Empty Dark Background) -->
     <div class="contact-left"></div>
 
     <!-- Right Column (Form) -->
     <div class="contact-right">
-      <h2>Contact Us</h2>
-      <p>Get in Touch. Reach out to us for inquiries or collaborations.</p>
+      <h2>Book a Consultation</h2>
+      <p>For personalised discussions or to book a session with one of our consultants,
+         please use our online booking portal: 
+         <a href="#">a session with SkyTech Consulting</a></p>
 
       <form id="contactForm">
         <!-- First Name -->
         <div class="form-group">
-          <label for="firstName">First Name*</label>
-          <input type="text" id="firstName" required>
-          <span class="error-msg">Please enter your first name</span>
+          <label for="fullName">Full Name*</label>
+          <input type="text" id="fullName">
+          <span class="error-msg">Please enter your Full Name</span>
         </div>
-
-        <!-- Last Name -->
+<!-- Email -->
         <div class="form-group">
-          <label for="lastName">Last Name*</label>
-          <input type="text" id="lastName" required>
-          <span class="error-msg">Please enter your last name</span>
-        </div>
-
-        <!-- Email -->
-        <div class="form-group">
-          <label for="email">Email*</label>
-          <input type="email" id="email" required>
+          <label for="email">Email Address*</label>
+          <input type="email" id="email">
           <span class="error-msg">Please enter a valid email</span>
         </div>
+        <!-- Company Name -->
+        <div class="form-group">
+          <label for="company">Company Name *</label>
+          <input type="text" id="company">
+          <span class="error-msg">Please enter your Company Name</span>
+        </div>
+
+        <!-- Phone-->
+        <div class="form-group">
+          <label for="phone">Phone Number*</label>
+          <input type="text" id="phone">
+          <span class="error-msg">Please enter your Phone Number</span>
+        </div>
+
 
         <!-- Message -->
         <div class="form-group">
           <label for="message">Message*</label>
-          <textarea id="message" required></textarea>
+          <textarea id="message"></textarea>
           <span class="error-msg">Please enter your message</span>
         </div>
 
@@ -373,7 +554,7 @@ supports but accelerates business success.
   </div>
 </section>
 
-  
+
 
 
 
@@ -383,7 +564,7 @@ supports but accelerates business success.
 
 
 <!-- Contact Info Section -->
-<section class="contact-info">
+<section class="contact-info app-section" data-page="home about services contact">
   <div class="row">
     <!-- Left Column -->
     <div class="col info-left">
@@ -411,7 +592,16 @@ supports but accelerates business success.
 
 
 
-<footer><p>© 2035 by SkyTech Consulting</p></footer>
+<footer class="app-section footer" data-page="home about services contact">
+  <p class="footer-left">Disclaimer & Privacy</p>
+  <p class="footer-right">© 2035 by SkyTech Consulting</p>
+</footer>
+
+
+
+
+
+
   <!-- JS -->
   <script src="./js/main.js"></script>
 </body>
