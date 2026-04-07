@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SkyTech Consulting — Coming Soon</title>
+  <meta name="description" content="SkyTech Consulting is launching soon. Get notified when we go live!" />
+  <style>
+    :root{
+      --bg1: #0f172a;
+      --bg2: #071130;
+      --accent: #6ee7b7;
+      --glass: rgba(255,255,255,0.06);
+      --muted: rgba(255,255,255,0.75);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
+    body{
+      background: radial-gradient(1200px 600px at 10% 20%, rgba(30,58,138,0.14), transparent),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      color: white; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      display:flex;align-items:center;justify-content:center;padding:32px;
+    }
+    .card{
+      width:100%;max-width:960px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border-radius:16px;padding:36px;box-shadow:0 10px 30px rgba(2,6,23,0.6);backdrop-filter: blur(8px);
+      display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center
+    }
+    .brand{display:flex;flex-direction:column;gap:18px}
+    .logo{
+      width:84px;height:84px;border-radius:14px;background:linear-gradient(135deg,#0ea5e9,#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:white;letter-spacing:0.6px;box-shadow:0 6px 18px rgba(124,58,237,0.18)
+    }
+    h1{font-size:36px;margin:0}
+    p.lead{margin:0;color:var(--muted);line-height:1.5}
+    .countdown{display:flex;gap:12px;margin-top:12px}
+    .tile{background:var(--glass);padding:12px 16px;border-radius:10px;min-width:80px;text-align:center}
+    .tile .num{font-size:20px;font-weight:700}
+    .tile .lbl{font-size:12px;color:var(--muted);margin-top:6px}
+
+    form{display:flex;flex-direction:column;gap:12px}
+    input[type="email"]{padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:white;font-size:14px}
+    button{padding:12px 14px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--accent),#60a5fa);font-weight:700;color:#052024;cursor:pointer}
+    .right{display:flex;flex-direction:column;gap:12px}
+    .socials{display:flex;gap:10px;margin-top:6px}
+    .socials a{width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;text-decoration:none}
+    .note{font-size:13px;color:var(--muted)}
+
+    @media (max-width:880px){
+      .card{grid-template-columns:1fr;max-width:720px;padding:24px}
+      .logo{width:64px;height:64px}
+      h1{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="main-heading">
+    <section class="brand">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div class="logo" aria-hidden="true">ST</div>
+        <div>
+          <div style="font-size:13px;color:var(--muted);font-weight:600">SkyTech Consulting</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.45)">Technology strategy • Cloud • Digital transformation</div>
+        </div>
+      </div>
+
+      <h1 id="main-heading">Coming Soon</h1>
+      <p class="lead">We’re building something that helps organisations move faster with cloud and AI. Join the waitlist and we’ll notify you the moment we launch.</p>
+
+      <div class="countdown" aria-hidden="false" id="countdown">
+        <div class="tile"><div class="num" id="days">--</div><div class="lbl">Days</div></div>
+        <div class="tile"><div class="num" id="hours">--</div><div class="lbl">Hours</div></div>
+        <div class="tile"><div class="num" id="minutes">--</div><div class="lbl">Minutes</div></div>
+        <div class="tile"><div class="num" id="seconds">--</div><div class="lbl">Seconds</div></div>
+      </div>
+
+      <p class="note">Prefer to reach out directly? Email us at <a href="mailto:hello@skytech.example" style="color:var(--accent);text-decoration:none">hello@skytech.example</a></p>
+    </section>
+
+    <aside class="right" aria-label="Sign up">
+      <div style="background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px">
+        <strong style="display:block;margin-bottom:6px">Get notified</strong>
+        <form id="signup" action="mailto:hello@skytech.example" method="post" enctype="text/plain" novalidate>
+          <label for="email" style="font-size:13px;color:var(--muted)">Email address</label>
+          <input id="email" type="email" name="email" placeholder="you@company.com" required>
+          <button type="submit">Join Waitlist</button>
+        </form>
+        <div class="socials" style="margin-top:10px">
+          <a href="#" title="Twitter" aria-label="Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22 5.8c-.6.3-1.2.5-1.8.6.7-.4 1.2-1 1.4-1.8-.6.4-1.4.7-2.1.9C18.8 4.6 17.6 4 16.3 4c-1.7 0-3.1 1.4-3.1 3.1 0 .2 0 .5.1.7-2.6-.1-4.9-1.4-6.4-3.3-.3.5-.5 1-.5 1.6 0 1.1.6 2 1.6 2.5-.5 0-1-.1-1.5-.4v.1c0 1.5 1.1 2.7 2.6 3-.4.1-.8.2-1.3.2-.3 0-.6 0-.9-.1.6 1.9 2.3 3.3 4.3 3.3-1.6 1.3-3.6 2-5.8 2-.4 0-.8 0-1.1-.1 2.1 1.4 4.6 2.2 7.3 2.2 8.8 0 13.6-7.3 13.6-13.6v-.6c.9-.6 1.6-1.2 2.1-2z" fill="currentColor"/></svg>
+          </a>
+          <a href="#" title="LinkedIn" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM8.7 18.2H6.1V10.2h2.6v8zM7.4 9.1c-.8 0-1.3-.6-1.3-1.4 0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4c0 .8-.6 1.4-1.5 1.4zM18.2 18.2h-2.6v-4.1c0-1-.4-1.6-1.3-1.6-.7 0-1.1.5-1.3 1-.1.2-.1.6-.1.9v3.8h-2.6V10.2h2.5v1.1c.3-.5.8-1.1 2.1-1.1 1.5 0 2.6 1 2.6 3.2v5.8z" fill="currentColor"/></svg>
+          </a>
+          <a href="#" title="GitHub" aria-label="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 .5C5.7.5.9 5.3.9 11.6c0 4.7 3 8.7 7.1 10.1.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.6 1.2 1.6 1.2 1 .1.3-1 .8-1.6-2.3-.3-4.7-1.2-4.7-5.3 0-1.2.4-2.1 1-2.9-.1-.3-.4-1.4.1-3 0 0 .8-.3 2.9 1.1 1-.3 2-.4 3-.4s2 .1 3 .4c2.1-1.4 2.9-1.1 2.9-1.1.5 1.6.2 2.7.1 3 0 .8 1 1.7 1 2.9 0 4.1-2.4 5-4.7 5.3.5.5.9 1.3.9 2.6v3.8c0 .3.2.6.7.5 4.1-1.4 7.1-5.5 7.1-10.1C23.1 5.3 18.3.5 12 .5z" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <p style="font-size:13px;color:var(--muted);margin:0">We respect your privacy — no spam, unsubscribe anytime.</p>
+    </aside>
+  </main>
+
+  <script>
+    // Countdown target date (set to a future date). Adjust as needed.
+    // Using ISO date so it's unambiguous: January 15, 2026 00:00:00 UTC
+    const target = new Date('2026-01-15T00:00:00Z').getTime();
+
+    function update() {
+      const now = Date.now();
+      const diff = target - now;
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '<div style="font-weight:700">We are live!</div>';
+        clearInterval(timer);
+        return;
+      }
+      const days = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const seconds = Math.floor((diff % (1000*60)) / 1000);
+      document.getElementById('days').textContent = String(days).padStart(2,'0');
+      document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2,'0');
+    }
+    update();
+    const timer = setInterval(update, 1000);
+
+    // Basic client-side validation & nicer mailto submission handling
+    document.getElementById('signup').addEventListener('submit', function(e){
+      const email = document.getElementById('email').value.trim();
+      if(!email || !email.includes('@')){ e.preventDefault(); alert('Please enter a valid email address.'); return; }
+      // build mailto fallback (some browsers may not support mailto form posts)
+      const subject = encodeURIComponent('Waitlist Signup — SkyTech Consulting');
+      const body = encodeURIComponent('Please add this email to the SkyTech waitlist:\n\n' + email);
+      const mailto = 'mailto:hello@skytech.example?subject=' + subject + '&body=' + body;
+      window.location.href = mailto;
+      e.preventDefault();
+    });
+  </script>
+</body>
+</html>
